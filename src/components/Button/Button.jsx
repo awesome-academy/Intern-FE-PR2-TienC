@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Button(props) {
-  const { type, text } = props
+  const { type = 'button', text } = props
   return (
     <button
       type={type}
