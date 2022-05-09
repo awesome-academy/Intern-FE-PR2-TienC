@@ -70,7 +70,7 @@ export default function Register() {
       <Helmet>
         <title>Đăng kí</title>
       </Helmet>
-      <div className="h-screen bg-green-400 w-full flex items-center justify-center">
+      <div className="h-screen bg-gradient-to-r from-emerald-500 to-teal-500 w-full flex items-center justify-center">
         <div className="w-[500px] bg-white rounded-xl shadow-slate-300 p-12">
           <h1 className="text-green-400 text-2xl uppercase text-center font-semibold">
             Đăng kí

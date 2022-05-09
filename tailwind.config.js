@@ -2,7 +2,8 @@ module.exports = {
   content: [
     'src/pages/**/*.{js,jsx}',
     'src/components/**/*.{js,jsx}',
-    'src/layouts/**/*.{js,jsx}'
+    'src/layouts/**/*.{js,jsx}',
+    'src/page-components/**/*.{js,jsx}'
   ],
   theme: {
     screens: {
