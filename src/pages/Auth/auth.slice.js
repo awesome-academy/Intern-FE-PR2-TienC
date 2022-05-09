@@ -7,6 +7,10 @@ export const register = createAsyncThunk(
   'auth/register',
   payloadCreator(authApi.register)
 )
+export const login = createAsyncThunk(
+  'auth/login',
+  payloadCreator(authApi.login)
+)
 
 const handleAuthFulfilled = (state, action) => {
   const { user, access_token } = action.payload.data
@@ -31,7 +35,8 @@ const authSlice = createSlice({
     }
   },
   extraReducers: {
-    [register.fulfilled]: handleAuthFulfilled
+    [register.fulfilled]: handleAuthFulfilled,
+    [login.fulfilled]: handleAuthFulfilled
   }
 })
 
