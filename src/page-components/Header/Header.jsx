@@ -1,13 +1,26 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { path } from 'src/constants/path'
 import Navbar from './Navbar'
+import useQuery from 'src/hooks/useQuery'
 
 export default function Header() {
+  const navigate = useNavigate()
+  const query = useQuery()
   const [searchValue, setSearchValue] = useState('')
 
+  useEffect(() => {
+    const { name = '' } = query
+    setSearchValue(name)
+  }, [query])
+
+  const handleSubmitSearch = event => {
+    event.preventDefault()
+    navigate(path.home + `?name=${searchValue}`)
+  }
+
   return (
-    <div className="w-full bg-gradient-to-r from-emerald-400 to-teal-400">
+    <div className="w-full bg-gradient-to-r from-emerald-400 to-teal-400 mb-10">
       <div className="container mx-auto pt-2 pb-1">
         <Navbar />
         <div className="flex items-center justify-between">
@@ -33,13 +46,16 @@ export default function Header() {
                   ></path>
                 </svg>
               </span>
-              <input
-                className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-3 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
-                placeholder="Tìm kiếm sản phẩm..."
-                type="text"
-                name="search"
-                onChange={e => setSearchValue(e.target.value)}
-              />
+              <form onSubmit={handleSubmitSearch}>
+                <input
+                  className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-3 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                  placeholder="Tìm kiếm sản phẩm..."
+                  type="text"
+                  name="search"
+                  value={searchValue}
+                  onChange={e => setSearchValue(e.target.value)}
+                />
+              </form>
             </label>
           </div>
           <Link to="" className="relative inline-block p-3">
