@@ -15,3 +15,15 @@
     box-shadow: 0 0.1rem 0.25rem 0 rgb(0 0 0 / 10%);
   }
 }
+
+@layer components {
+  .activeOptionSort {
+    background-color: #16a34a !important;
+    color: white !important;
+  }
+
+  .activeCategory {
+    color: #16a34a !important;
+    font-weight: 600;
+  }
+}
