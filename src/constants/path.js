@@ -4,6 +4,7 @@ class Path {
     this.login = '/login'
     this.register = '/register'
     this.product = '/product'
+    this.productDetail = '/product/:idProduct'
     this.notFound = '*'
   }
 }
