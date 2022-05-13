@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { path } from 'src/constants/path'
 import Navbar from './Navbar'
 import useQuery from 'src/hooks/useQuery'
+import { useSelector } from 'react-redux'
 
 export default function Header() {
   const navigate = useNavigate()
@@ -18,6 +19,8 @@ export default function Header() {
     event.preventDefault()
     navigate(path.home + `?name=${searchValue}`)
   }
+
+  const purchases = useSelector(state => state.cart.purchase)
 
   return (
     <div className="w-full bg-gradient-to-r from-emerald-400 to-teal-400 mb-10">
@@ -74,9 +77,9 @@ export default function Header() {
               <circle cx="10.7" cy={23} r="2.2" stroke="none" />
               <circle cx="19.7" cy={23} r="2.2" stroke="none" />
             </svg>
-            <span className="flex items-center justify-center text-xs font-semibold absolute top-[2px] right-[15px] rounded-[50%] w-[25px] h-[25px] text-white bg-green-500">
-              1
-            </span>
+            <div className="flex items-center justify-center text-xs font-semibold absolute top-[2px] right-[15px] rounded-[50%] w-[25px] h-[25px] text-white bg-green-500">
+              {purchases.length > 0 ? purchases.length : 0}
+            </div>
           </Link>
         </div>
       </div>

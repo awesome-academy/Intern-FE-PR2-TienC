@@ -2,7 +2,11 @@ import { unwrapResult } from '@reduxjs/toolkit'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { getProductDetail } from './detailproduct.slice'
+import {
+  addToCart,
+  getCartPurchase,
+  getProductDetail
+} from './detailproduct.slice'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Rating from '@mui/material/Rating'
@@ -24,6 +28,17 @@ export default function DetailProduct() {
     }
     _getDetailProduct()
   }, [idProduct, dispatch])
+
+  const handleChangeQuantity = value => setQuantity(value)
+
+  const handleAddToCart = async () => {
+    const data = {
+      product_id: product._id,
+      buy_count: quantity
+    }
+    await dispatch(addToCart(data)).then(unwrapResult)
+    await dispatch(getCartPurchase()).then(unwrapResult)
+  }
 
   return (
     product && (
@@ -77,6 +92,7 @@ export default function DetailProduct() {
                   <input
                     type="text"
                     value={quantity}
+                    onChange={handleChangeQuantity}
                     className="w-[40px] px-3 py-1 border border-gray-200"
                   />
                   <button
@@ -87,7 +103,10 @@ export default function DetailProduct() {
                   </button>
                 </div>
                 <div>
-                  <button className="px-3 py-2 border border-green-600 bg-green-100 text-green-600">
+                  <button
+                    className="px-3 py-2 border border-green-600 bg-green-100 text-green-600"
+                    onClick={handleAddToCart}
+                  >
                     Thêm vào giỏ hàng
                   </button>
                 </div>
