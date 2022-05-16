@@ -5,6 +5,8 @@ class Path {
     this.register = '/register'
     this.product = '/product'
     this.productDetail = '/product/:idProduct'
+    this.cart = '/cart'
+    this.payment = '/payment'
     this.notFound = '*'
   }
 }

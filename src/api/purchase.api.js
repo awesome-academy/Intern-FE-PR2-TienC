@@ -11,5 +11,14 @@ export const purchaseApi = {
         status: -1
       }
     })
+  },
+  updatePurchase(data) {
+    return http.put(`${URL}/update-purchase`, data)
+  },
+  deletePurchase(id) {
+    return http.delete(URL, id)
+  },
+  buyPurchase(data) {
+    return http.post(`${URL}/buy-products`, data)
   }
 }
