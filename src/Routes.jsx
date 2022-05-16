@@ -11,6 +11,10 @@ import Cart from 'src/pages/Checkout/Cart'
 import AuthenticatedGuard from 'src/guards/AuthenticatedGuard'
 import UnauthenticatedGuard from 'src/guards/UnauthenticatedGuard'
 import Payment from 'src/pages/Checkout/Payment'
+import User from './pages/User/User'
+import Profile from './pages/User/Profile'
+import ResetPassword from './pages/User/ResetPassword'
+import Purchase from './pages/User/Purchase'
 
 export default function RoutesComponent() {
   return (
@@ -22,11 +26,17 @@ export default function RoutesComponent() {
             path={path.productDetail}
             element={<DetailProduct />}
           />
+          <Route path={path.notFound} element={<NotFound />} />
           <Route element={<AuthenticatedGuard />}>
             <Route path={path.cart} element={<Cart />} />
             <Route path={path.payment} element={<Payment />} />
+            <Route path={path.user} element={<User />}>
+              <Route path="" element={<Profile />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="password" element={<ResetPassword />} />
+              <Route path="purchase" element={<Purchase />} />
+            </Route>
           </Route>
-          <Route path={path.notFound} element={<NotFound />} />
         </Route>
         <Route element={<UnauthenticatedGuard />}>
           <Route path={path.register} element={<Register />} />

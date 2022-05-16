@@ -1,6 +1,9 @@
 import http from 'src/utils/http'
 
 const URL = 'purchases'
+const STATUS_INCART = -1
+const STATUS_ALL = 0
+
 export const purchaseApi = {
   addToCart(data) {
     return http.post(`${URL}/add-to-cart`, data)
@@ -8,7 +11,14 @@ export const purchaseApi = {
   getCartPurchase() {
     return http.get(URL, {
       params: {
-        status: -1
+        status: STATUS_INCART
+      }
+    })
+  },
+  getPurchaseOrdered() {
+    return http.get(URL, {
+      params: {
+        status: STATUS_ALL
       }
     })
   },

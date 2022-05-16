@@ -7,6 +7,10 @@ class Path {
     this.productDetail = '/product/:idProduct'
     this.cart = '/cart'
     this.payment = '/payment'
+    this.user = '/user'
+    this.profile = '/profile'
+    this.password = '/password'
+    this.purchase = '/purchase'
     this.notFound = '*'
   }
 }

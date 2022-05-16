@@ -21,7 +21,7 @@ export default function Navbar() {
     setAnchorEl(null)
   }
   const handleOpenMyAccount = () => {
-    navigate(path.home)
+    navigate(path.user)
     setAnchorEl(null)
   }
   const handleLogoutClick = () => {
