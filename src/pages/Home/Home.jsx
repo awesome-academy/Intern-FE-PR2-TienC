@@ -46,7 +46,7 @@ export default function Home() {
       </Helmet>
       <div className="container mx-auto flex">
         {/* Side */}
-        <div className="flex flex-[0_0_190px] mr-[20px  ]">
+        <div className="flex flex-[0_0_190px] mr-[20px]">
           <FilterPanel categories={categories} filters={filters} />
         </div>
         {/* Main */}
