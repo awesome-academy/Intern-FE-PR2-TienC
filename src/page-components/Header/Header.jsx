@@ -61,7 +61,7 @@ export default function Header() {
               </form>
             </label>
           </div>
-          <Link to="" className="relative inline-block p-3">
+          <Link to={path.cart} className="relative inline-block p-3">
             <svg
               viewBox="0 0 26.6 25.6"
               className="shopee-svg-icon navbar__link-icon icon-shopping-cart-2 text-white fill-white stroke-white w-[26px] h-[26px] mx-5"

@@ -13,6 +13,7 @@ import Rating from '@mui/material/Rating'
 import { formatMoney } from '../../utils/helper'
 import { Helmet } from 'react-helmet-async'
 import DOMPurify from 'dompurify'
+import { toast } from 'react-toastify'
 
 export default function DetailProduct() {
   const { idProduct } = useParams()
@@ -38,6 +39,10 @@ export default function DetailProduct() {
     }
     await dispatch(addToCart(data)).then(unwrapResult)
     await dispatch(getCartPurchase()).then(unwrapResult)
+    toast.success('Thêm vào giỏ hàng thành công', {
+      position: 'top-center',
+      autoClose: 1500
+    })
   }
 
   return (
