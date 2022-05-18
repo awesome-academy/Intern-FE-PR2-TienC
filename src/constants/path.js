@@ -11,6 +11,9 @@ class Path {
     this.profile = '/profile'
     this.password = '/password'
     this.purchase = '/purchase'
+    this.admin = '/admin'
+    this.dashboard = '/dashboard'
+    this.customer = '/customer'
     this.notFound = '*'
   }
 }

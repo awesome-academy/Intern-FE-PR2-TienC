@@ -7,6 +7,7 @@ import Fade from '@mui/material/Fade'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import { logout } from 'src/pages/Auth/auth.slice'
+import { useAdminAuthenticated } from './../../hooks/useAdminAuthenticated'
 
 export default function Navbar() {
   const dispatch = useDispatch()
@@ -28,8 +29,13 @@ export default function Navbar() {
     dispatch(logout())
     navigate(path.home)
   }
+  const handleOpenDashboard = () => {
+    navigate(path.admin + path.dashboard)
+    setAnchorEl(null)
+  }
 
   const authenticated = useAuthenticated()
+  const adminAuthenticated = useAdminAuthenticated()
   const profile = useSelector(state => state.auth.profile)
   return (
     <>
@@ -58,6 +64,11 @@ export default function Navbar() {
             onClose={handleClose}
             TransitionComponent={Fade}
           >
+            {adminAuthenticated && (
+              <MenuItem onClick={handleOpenDashboard}>
+                Dashboard
+              </MenuItem>
+            )}
             <MenuItem onClick={handleOpenMyAccount}>
               My Account
             </MenuItem>
