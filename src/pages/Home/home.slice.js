@@ -33,6 +33,5 @@ const HomeSlice = createSlice({
   }
 })
 
-const { actions, reducer } = HomeSlice
-export const { logout } = actions
+const { reducer } = HomeSlice
 export default reducer
