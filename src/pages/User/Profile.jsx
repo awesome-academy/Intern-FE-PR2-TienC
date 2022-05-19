@@ -34,14 +34,11 @@ export default function Profile() {
       address: data.address
     }
     try {
-      const res = await dispatch(updateProfile(body)).then(
-        unwrapResult
-      )
+      await dispatch(updateProfile(body)).then(unwrapResult)
       toast.success('Cập nhật thông tin cá nhân thành công', {
         position: 'top-center',
         autoClose: 2000
       })
-      console.log(res)
     } catch (error) {
       console.log(error)
     }

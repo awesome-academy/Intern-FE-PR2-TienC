@@ -38,7 +38,6 @@ export default function Home() {
       .then(unwrapResult)
       .then(res => setCategories(res.data))
   }, [dispatch])
-
   return (
     <>
       <Helmet>

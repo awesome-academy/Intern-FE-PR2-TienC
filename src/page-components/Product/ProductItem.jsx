@@ -18,7 +18,7 @@ export default function ProductItem({
         to={path.product + `/${_id}`}
         className="inline-block bg-white shadow-product-item rounded-sm"
       >
-        <img src={image} alt={name} />
+        <img src={image} alt={name} className="w-full h-[204px]" />
         <div className="p-2 flex flex-col">
           <p className="line-clamp-2 break-words text-ellipsis text-xs mb-2">
             {name}

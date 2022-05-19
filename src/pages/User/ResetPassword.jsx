@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import InputField from '../../components/InputField/InputField'
 import Button from '../../components/Button/Button'
 import { useDispatch } from 'react-redux'
-import { updateProfile } from './../Auth/auth.slice'
+import { updateProfile } from '../Auth/auth.slice'
 import { unwrapResult } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify'
 
