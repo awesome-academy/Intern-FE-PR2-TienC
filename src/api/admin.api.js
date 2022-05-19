@@ -9,6 +9,9 @@ const adminApi = {
   },
   addProduct(data) {
     return http.post(`${URL}/products`, data)
+  },
+  addCategory(data) {
+    return http.post(`${URL}/categories`, data)
   }
 }
 

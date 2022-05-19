@@ -16,3 +16,8 @@ export const addProduct = createAsyncThunk(
   'admin/addProduct',
   payloadCreator(adminApi.addProduct)
 )
+
+export const addCategory = createAsyncThunk(
+  'admin/addCategory',
+  payloadCreator(adminApi.addCategory)
+)
