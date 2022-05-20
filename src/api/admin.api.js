@@ -12,6 +12,12 @@ const adminApi = {
   },
   addCategory(data) {
     return http.post(`${URL}/categories`, data)
+  },
+  getOrders() {
+    return http.get(`${URL}/stats/user-orders`)
+  },
+  confirmOrders(data) {
+    return http.put(`${URL}/users/accept-purchase/${data}`)
   }
 }
 

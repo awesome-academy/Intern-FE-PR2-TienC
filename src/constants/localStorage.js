@@ -3,6 +3,7 @@ const LocalStorage = {
   accessToken: 'access_token',
   cart: 'cart',
   products: 'products',
-  categories: 'categories'
+  categories: 'categories',
+  orders: 'orders'
 }
 export default LocalStorage
