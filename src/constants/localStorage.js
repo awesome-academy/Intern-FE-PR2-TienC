@@ -4,6 +4,10 @@ const LocalStorage = {
   cart: 'cart',
   products: 'products',
   categories: 'categories',
-  orders: 'orders'
+  orders: 'orders',
+  income: 'income',
+  totalSales: 'totalSales',
+  topCustomers: 'topCustomers',
+  incomeByMonth: 'incomeByMonth'
 }
 export default LocalStorage
