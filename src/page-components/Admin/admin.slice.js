@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { payloadCreator } from 'src/utils/helper'
 import adminApi from 'src/api/admin.api'
-import LocalStorage from 'src/constants/localStorage'
+import { logout } from '../../pages/Auth/auth.slice'
 
 export const getAllUsers = createAsyncThunk(
   'admin/getUser',
@@ -33,22 +33,54 @@ export const confirmOrder = createAsyncThunk(
   payloadCreator(adminApi.confirmOrders)
 )
 
+export const getIncome = createAsyncThunk(
+  'admin/getIncome',
+  payloadCreator(adminApi.getIncome)
+)
+
+export const getTotalSales = createAsyncThunk(
+  'admin/getSales',
+  payloadCreator(adminApi.getTotalSales)
+)
+
+export const getTopCustomers = createAsyncThunk(
+  'admin/getTopCustomers',
+  payloadCreator(adminApi.getTopCustomers)
+)
+
+export const getIncomeByMonth = createAsyncThunk(
+  'admin/getIncomeByMonth',
+  payloadCreator(adminApi.getIncomeByMonth)
+)
+
 const handleGetOrdersFulfilled = (state, action) => {
   state.orders = action.payload.data
-  localStorage.setItem(
-    LocalStorage.orders,
-    JSON.stringify(state.orders)
-  )
+}
+
+const handleGetIncomeFulfilled = (state, action) => {
+  state.income = action.payload.data[0].totalSaleAmount
+}
+
+const handleGetTotalSalesFulfilled = (state, action) => {
+  state.totalSales = action.payload.data
 }
 
 const adminSlice = createSlice({
   name: 'admin',
   initialState: {
-    orders:
-      JSON.parse(localStorage.getItem(LocalStorage.orders)) || []
+    orders: [],
+    income: 0,
+    totalSales: []
   },
   extraReducers: {
-    [getOrders.fulfilled]: handleGetOrdersFulfilled
+    [getOrders.fulfilled]: handleGetOrdersFulfilled,
+    [getIncome.fulfilled]: handleGetIncomeFulfilled,
+    [getTotalSales.fulfilled]: handleGetTotalSalesFulfilled,
+    [logout.fulfilled]: state => {
+      state.orders = []
+      state.income = 0
+      state.totalSales = []
+    }
   }
 })
 

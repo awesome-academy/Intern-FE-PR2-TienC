@@ -18,6 +18,18 @@ const adminApi = {
   },
   confirmOrders(data) {
     return http.put(`${URL}/users/accept-purchase/${data}`)
+  },
+  getIncome() {
+    return http.get(`${URL}/stats/income`)
+  },
+  getIncomeByMonth() {
+    return http.get(`${URL}/stats/income?month=true`)
+  },
+  getTotalSales() {
+    return http.get(`${URL}/stats/sales`)
+  },
+  getTopCustomers() {
+    return http.get(`${URL}/stats/top-customer`)
   }
 }
 
